@@ -1,14 +1,23 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
+
 import {
   getTodos,
   createTodo,
   updateTodo,
   deleteTodo,
 } from "../api/todoApi";
-import type { CreateTodoPayload, UpdateTodoPayload } from "../types/todo";
+
+import type {
+  CreateTodoPayload,
+  UpdateTodoPayload,
+} from "../types/todo";
 
 /**
- * Hook untuk fetch semua todos
+ * GET TODOS
  */
 export const useTodos = () => {
   return useQuery({
@@ -18,7 +27,7 @@ export const useTodos = () => {
 };
 
 /**
- * Hook untuk create todo
+ * CREATE TODO
  */
 export const useCreateTodo = () => {
   const queryClient = useQueryClient();
@@ -26,7 +35,10 @@ export const useCreateTodo = () => {
   return useMutation({
     mutationFn: (payload: CreateTodoPayload) => createTodo(payload),
 
-    // refresh data setelah create berhasil
+    /**
+     * setelah create berhasil
+     * kita refresh data list
+     */
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["todos"] });
     },
@@ -34,7 +46,7 @@ export const useCreateTodo = () => {
 };
 
 /**
- * Hook untuk update todo
+ * UPDATE TODO
  */
 export const useUpdateTodo = () => {
   const queryClient = useQueryClient();
@@ -49,7 +61,7 @@ export const useUpdateTodo = () => {
 };
 
 /**
- * Hook untuk delete todo
+ * DELETE TODO
  */
 export const useDeleteTodo = () => {
   const queryClient = useQueryClient();
