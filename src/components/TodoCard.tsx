@@ -40,16 +40,7 @@ export default function TodoCard({ todo, onEdit, onDelete }: Props) {
       {/* actions */}
       <div className="flex gap-2 pt-3 border-t border-gray-100">
         <button
-          onClick={() => onEdit={(todo) => {
-  const newTitle = prompt("Edit todo title:", todo.title);
-
-  if (!newTitle) return;
-
-  updateTodo.mutate({
-    id: todo.id,
-    title: newTitle,
-  });
-}}
+          onClick={() => onEdit(todo)}
           className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-xl"
         >
           Edit
