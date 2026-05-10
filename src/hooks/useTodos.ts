@@ -5,7 +5,7 @@ import {
   updateTodo,
   deleteTodo,
 } from "../api/todoApi";
-import { CreateTodoPayload, UpdateTodoPayload } from "../types/todo";
+import type { CreateTodoPayload, UpdateTodoPayload } from "../types/todo";
 
 /**
  * Hook untuk fetch semua todos

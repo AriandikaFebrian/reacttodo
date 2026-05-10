@@ -1,11 +1,9 @@
+import TodoPage from "./pages/TodoPage";
+
 /**
- * Root component aplikasi
- * nanti akan menjadi container utama semua page
+ * Root App
+ * hanya sebagai container routing sederhana
  */
 export default function App() {
-  return (
-    <div>
-      <h1>Todo App - DummyJSON</h1>
-    </div>
-  );
+  return <TodoPage />;
 }
